@@ -1,0 +1,61 @@
+# Default configuration for Learning to Reformulate training
+
+seed: 42
+
+# Data configuration
+data:
+  normalize: false  # FIXED: Normalization was making all problems infeasible
+  train_ratio: 0.8
+  val_ratio: 0.1
+  test_ratio: 0.1
+  
+  # Synthetic data generation (used if no real data provided)
+  num_synthetic: 1000
+  synthetic_config:
+    num_variables_range: [50, 200]    # Much larger problems
+    num_constraints_range: [30, 150]  # More constraints  
+    density_range: [0.3, 0.7]         # Higher density for complexity
+    seed: 42
+    ensure_feasible: true  # IMPORTANT: This ensures only feasible problems are generated
+    max_retries: 10        # Maximum attempts to generate feasible problems
+    verify_with_solver: true   # Enable solver verification for better quality problems
+
+# Model architecture
+model:
+  constraint_feature_dim: 5
+  variable_feature_dim: 3
+  gnn_hidden_dim: 64
+  gnn_num_layers: 2
+  pointer_hidden_dim: 128
+  num_clusters: 20
+  clustering_method: "kmeans"  # kmeans, random, sequential
+  dropout: 0.1
+
+# Training configuration
+training:
+  num_episodes: 10000
+  learning_rate: 3e-4  # Increased for faster learning
+  baseline_learning_rate: 1e-3
+  gradient_clip: 0.5  # Reduced for more stable gradients
+  solver_time_limit: 120.0  # seconds (increased from 60 to reduce timeouts)
+  entropy_weight: 0.02  # Encourage exploration
+  baseline_buffer_size: 200  # Larger buffer for better baseline estimates
+  
+  # Validation and checkpointing
+  validation_frequency: 50  # More frequent validation
+  save_frequency: 500
+  early_stopping_patience: 10  # Stop if no improvement for 10 validations
+  
+  # Improved temperature schedule for better exploration/exploitation
+  temperature_schedule:
+    initial_temp: 2.0  # Higher initial exploration
+    min_temp: 0.05     # Lower final temperature
+    decay_rate: 0.995  # Slower decay
+    decay_frequency: 50
+    adaptive: true
+    warmup_episodes: 100  # Exploration warmup
+
+# Evaluation configuration
+evaluation:
+  num_test_samples: 100
+  metrics: ["iteration_improvement", "time_improvement"] 
