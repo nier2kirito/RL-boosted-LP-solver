@@ -1,6 +1,18 @@
 # Learning to Reformulate Linear Programming
 
-This repository implements the "Learning to Reformulate for Linear Programming" paper, which presents a reinforcement learning-based method for automatically reformulating linear programming (LP) problems to improve solver performance.
+This repository contains an independent implementation of the paper ["Accelerating Linear Programming Solving by Exploiting the Performance Variability via Reinforcement Learning"](https://ai-2-ase.github.io/papers/2%5CSubmission%5CAAAI2023_Learning_to_ReformulationCameraReadVersion.pdf) (AAAI 2023).
+
+**⚠️ Note**: This is an unofficial implementation created for research and educational purposes. The original authors are not affiliated with this implementation.
+
+## Original Paper
+
+**Title**: Accelerating Linear Programming Solving by Exploiting the Performance Variability via Reinforcement Learning  
+**Authors**: Xijun Li¹'², Qingyu Qu³, Fangzhou Zhu², Mingxuan Yuan², Jia Zeng², Jie Wang¹  
+**Affiliations**: 
+- ¹University of Science and Technology of China
+- ²Huawei Noah's Ark Lab  
+- ³Beihang University
+**Conference**: AAAI 2023
 
 ## Architecture Overview
 
@@ -107,14 +119,18 @@ reformulating_lp/
 
 ## Paper Reference
 
+**Please cite the original paper if you use this implementation:**
+
 ```bibtex
-@article{li2022learning,
-  title={Learning to Reformulate for Linear Programming},
-  author={Li, Xijun and Qu, Qingyu and Zhu, Fangzhou and Zeng, Jia and Yuan, Mingxuan and Mao, Kun and Wang, Jie},
-  journal={arXiv preprint arXiv:2201.06216},
-  year={2022}
+@inproceedings{li2023accelerating,
+  title={Accelerating Linear Programming Solving by Exploiting the Performance Variability via Reinforcement Learning},
+  author={Li, Xijun and Qu, Qingyu and Zhu, Fangzhou and Yuan, Mingxuan and Zeng, Jia and Wang, Jie},
+  booktitle={Proceedings of the AAAI Conference on Artificial Intelligence},
+  year={2023}
 }
 ```
+
+**Paper Link**: [https://ai-2-ase.github.io/papers/2%5CSubmission%5CAAAI2023_Learning_to_ReformulationCameraReadVersion.pdf](https://ai-2-ase.github.io/papers/2%5CSubmission%5CAAAI2023_Learning_to_ReformulationCameraReadVersion.pdf)
 
 ## Performance Results
 
@@ -125,4 +141,6 @@ The system achieves:
 
 ## License
 
-MIT License - see LICENSE file for details. 
+This implementation is licensed under the MIT License - see LICENSE file for details.
+
+**Note**: This license applies only to this implementation code. The original research ideas and methodology belong to the original paper authors. 
